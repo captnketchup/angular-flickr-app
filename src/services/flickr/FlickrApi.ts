@@ -8,13 +8,16 @@ import type {
   PhotoSearchResponse,
 } from './search.interface';
 
-@Injectable()
+// TODO don't exactly know what this decorator does but without this the app doesn't work 🥺👉👈
+@Injectable({
+  providedIn: 'root'
+})
 export class FlickerApi {
   apiKey: string;
   baseRequest: BaseRequest;
 
   constructor(private http: HttpClient) {
-    if (apiKey === null || apiKey === '') {
+    if (!apiKey) {
       throw new Error('apiKey is null');
     }
 
@@ -27,13 +30,14 @@ export class FlickerApi {
     };
   }
 
-  // by using angular's http service the request is async
+  // by using angular's http service (observable) the request is async 
   public search(
     options: BaseRequest,
     psr: PhotoSearchRequest
   ): Observable<PhotoSearchResponse> {
     const baseUrl = this.createBaseUrl(options);
     const url = this.completeSearchUrl(baseUrl, psr);
+    console.log(url.toString())
     return this.http.get<PhotoSearchResponse>(url.toString());
   }
 
@@ -47,13 +51,15 @@ export class FlickerApi {
     return url;
   }
 
-  // completes the previously built url with additional search parameters
+  // completes the previously built url with additional search parameters: checks which search params are 
+  // given and then builds those into the url
   private completeSearchUrl(base: URL, psr: PhotoSearchRequest): URL {
-    if (psr.text !== undefined) base.searchParams.append('text', psr.text);
-    if (psr.tags !== undefined)
-      // using the spread operator [...] the tags are joined by commas (they are comma-delimited src:documentation)
+    if (psr.text) base.searchParams.append('text', psr.text);
+    if (psr.tags)
+      // using the spread operator [...] to make an array then the tags are joined by commas (they are comma-delimited src:documentation)
+      // if there is only one tag, nothing happens
       base.searchParams.append('tags', [...psr.tags].join(','));
-    if (psr.user_id !== undefined)
+    if (psr.user_id)
       base.searchParams.append('user_id', psr.user_id);
     return base;
   }

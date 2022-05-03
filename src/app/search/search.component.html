@@ -1,0 +1,16 @@
+<p>search works!</p>
+
+<p>
+    <label>Text</label>
+    <input type="text" id="item-input" #textSearch/>
+</p>
+<p>
+    <label>Tag(s)</label>
+    <input type="text" id="item-input" #tagSearch/>
+</p>
+<p>
+    <label>OwnerID</label>
+    <input type="text" id="item-input" #ownerSearch/>
+</p>
+<button type="button" (click)="addOnSearch({text:textSearch.value, tag:tagSearch.value, owner:ownerSearch.value})">Search</button>
+<p>{{searchField}}</p>
