@@ -42,3 +42,5 @@ testem.log
 Thumbs.db
 
 .env
+src/services/constants.ts
+src/services/constants.ts
