@@ -9,24 +9,29 @@ import { SearchComponentFields } from '../SearchComponentFields';
   styleUrls: ['./search.component.sass']
 })
 export class SearchComponent implements OnInit {
-  @Input() searchField = '';
+  searchFields: SearchComponentFields = {
+    text: "",
+    tag: "",
+    owner: ""
+  }
   @Output() onSearch = new EventEmitter<SearchComponentFields>();
 
-  addOnSearch(value: SearchComponentFields){
-    this.onSearch.emit(value);
+  addOnSearch(){
+    this.onSearch.emit(
+      this.searchFields
+    );
   }
-  
-  // search = {
-  //   text: "input"
-  // }
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-
-  searchEvent(event?: MouseEvent){
-    
-  }
+  keyPress(event: KeyboardEvent) {
+    console.log(event);
+    const key = event.key;
+    if(key == "Enter"){
+      this.addOnSearch();
+    }
+}
 }

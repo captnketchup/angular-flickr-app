@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { apiKey } from './../constants';
+import { environment } from './../../environments/environment';
 import { BaseRequest, BaseRequestMethodEnum } from './base.interface';
 import type {
   PhotoSearchRequest,
@@ -17,11 +17,11 @@ export class FlickerApi {
   baseRequest: BaseRequest;
 
   constructor(private http: HttpClient) {
-    if (!apiKey) {
+    if (!environment.apiKey) {
       throw new Error('apiKey is null');
     }
 
-    this.apiKey = apiKey;
+    this.apiKey = environment.apiKey;
     this.baseRequest = {
       api_key: this.apiKey,
       format: 'json',

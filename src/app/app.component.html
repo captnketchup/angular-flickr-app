@@ -1,17 +1,12 @@
+<header>
+  Flickr API search app made by Kővári D. (JDP18V)
+</header>
+<main>
+
 <div>
-  <h1>szia uram</h1>
   <app-search (onSearch)="searchText($event)"></app-search>
-  <p>
-    search text értéke: {{appSearchField.text}}
-  </p>
-  <p>
-    search tags értéke: {{appSearchField.tag}}
-  </p>  
-  <p>
-    search owner értéke: {{appSearchField.owner}}
-  </p>
 </div>
 <div>
   <app-grid-view [photoResult]="photoResults"></app-grid-view>
 </div>
-
+</main>

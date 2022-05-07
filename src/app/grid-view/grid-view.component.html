@@ -1,4 +1,3 @@
-<p>grid-view works!</p>
 <div [ngClass]="'grid-container'">  
     <div *ngFor="let picture of (photoResult?.photos?.photo || [])">     <!--if array is null an empty array is passed-->
         <a [routerLink]="['/picture/{id}']">
