@@ -1,3 +1,7 @@
+/**
+ * Interfaces generated from the response JSON file
+ */
+
 export interface Photo {
   id: string;
   owner: string;

@@ -24,8 +24,11 @@ export class PhotoViewComponent implements OnInit {
   pageContent: Photo | null = null;
   photoResponse: PhotoMeta | null = null;
   
-  // gets photoID from url (.../photo/:photoID)
-  // https://angular.io/guide/router#accessing-query-parameters-and-fragments
+  
+  /**
+   *  gets photoID from url (.../photo/:photoID)
+   *  https://angular.io/guide/router#accessing-query-parameters-and-fragments
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap) => {
       this.photoID = paramMap.get('photoID');
@@ -40,11 +43,19 @@ export class PhotoViewComponent implements OnInit {
     });
   }
 
+  /**
+   * 
+   * @param pageContent - the current content of the page
+   * @returns the url which leads to the picture
+   */
   makeImageUrl(pageContent: Photo | null) {
     if (!pageContent) throw new Error('photo object null');
     return `https://live.staticflickr.com/${pageContent.server}/${pageContent.id}_${pageContent.secret}.jpg`;
   }
 
+  /**
+   * Navigates back from the stack
+   */
   goBack(){
     window.history.back()
   }

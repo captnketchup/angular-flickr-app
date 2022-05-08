@@ -23,6 +23,12 @@ export class PhotoListComponent implements OnInit {
   };
   public photoResults: PhotoSearchResponse | null = null;
 
+  
+  /**
+   * 
+   * @param newSearch the current search fields from user input
+   * creates a parameterized search and runs it
+   */
   searchText(newSearch: SearchComponentFields) {
     this.appSearchField = newSearch;
     const psr: PhotoSearchRequest = {

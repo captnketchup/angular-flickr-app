@@ -24,9 +24,11 @@ export class TagViewComponent implements OnInit {
   photoResults: PhotoSearchResponse | null = null;
 
 
-  // gets the tagID -which is a string- from the URL
-  // and creates a new URL (.../tags/:tagID) where the 
-  // relevant pictures are listed
+  /**
+   * gets the tagID -which is a string- from the URL
+   * and creates a new URL (.../tags/:tagID) where the 
+   * relevant pictures are listed
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap) => {
       this.tagID = paramMap.get('tagID');

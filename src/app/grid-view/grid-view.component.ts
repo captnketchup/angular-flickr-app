@@ -16,9 +16,13 @@ export class GridViewComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  // creates a URL in the likeness of this:
-  // https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
-  // src: https://www.flickr.com/services/api/misc.urls.html
+  /**
+   * 
+   * @param image 
+   * @returns a URL in the likeness of this:
+   * https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
+   * src: https://www.flickr.com/services/api/misc.urls.html
+   */
   makeImageUrl(image: Photo){
     return `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`
   }
