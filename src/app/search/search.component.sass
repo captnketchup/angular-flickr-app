@@ -17,9 +17,11 @@ input
     flex-direction: row
     justify-content: space-between
     padding: 2em 0
+    @media only screen and ( max-width: 800px )
+        flex-direction: column
+
 
 label
-    font-family: 'Inter', sans-serif
     font-size: calc(.9rem + .8vw)
     font-weight: 700
     text-align: center
@@ -32,5 +34,4 @@ button
     padding: 0.2em 0.5em
     margin: 0.7em 0
     color: #AC97D4
-    font-family: 'Inter', sans-serif
     font-weight: 550

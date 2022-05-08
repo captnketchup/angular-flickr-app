@@ -29,3 +29,7 @@ export interface PhotoSearchRequest {
   tags?: string[] | string;
 }
 
+export interface PhotoMetaRequest{
+  id: string
+}
+

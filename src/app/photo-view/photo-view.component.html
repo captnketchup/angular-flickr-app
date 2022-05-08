@@ -1,0 +1,37 @@
+<a href="javascript:void(0)" (click)="goBack()"> 
+  <mat-icon>arrow_back</mat-icon>  
+</a>
+<div [ngClass]="'photo-view-container'" *ngIf="pageContent" class="">
+  <div [ngClass]="'photo-view-image'">
+    <img [src]="makeImageUrl(pageContent)" />
+  </div>
+  <div [ngClass]="'photo-view-infobar'">
+    <h1>{{ pageContent.title._content }}</h1>
+    <div ngClass="photo-view-infobar-element">
+      <mat-icon> insert_photo</mat-icon>
+      <p>{{ pageContent.id }}</p>
+    </div>
+    <div ngClass="photo-view-infobar-element">
+      <mat-icon>person</mat-icon>
+      <p>{{ pageContent.owner.username }}</p>
+    </div>
+    <div *ngIf="pageContent.dates.taken" ngClass="photo-view-infobar-element">
+      <mat-icon>date_range</mat-icon>
+      <p>{{ pageContent.dates.taken }}</p>
+    </div>
+    <div *ngIf="pageContent.description._content !== ''" ngClass="photo-view-infobar-element">
+      <mat-icon>description</mat-icon>
+      <p>{{pageContent.description._content}}</p>
+    </div>
+    <div *ngIf="pageContent.tags.tag.length > 0">
+      <span [ngClass]="'tag'" *ngFor="let t of pageContent.tags.tag">
+        <a routerLink="/tag/{{t._content}}">
+        {{t._content}}
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+<div *ngIf="!pageContent">
+  <p>loading data...</p>
+</div>

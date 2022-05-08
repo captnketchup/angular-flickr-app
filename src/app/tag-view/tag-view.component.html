@@ -1,0 +1,13 @@
+<div>
+        <a routerLink="/">
+            <mat-icon>home</mat-icon>
+        </a>
+    <h1>Results of tag: {{tagID}}</h1>
+    <div *ngIf="photoResults">
+        <app-grid-view [photoResult]="photoResults"></app-grid-view>
+    </div>
+    <div *ngIf="!photoResults">
+        <p>loading</p>
+    </div>
+
+</div>

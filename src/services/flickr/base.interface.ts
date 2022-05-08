@@ -1,5 +1,5 @@
 export interface BaseRequest {
-  method: BaseRequestMethodEnum;
+  method?: BaseRequestMethodEnum;
   api_key: string;
   format: 'json';
   nojsoncallback: 1;
@@ -7,4 +7,5 @@ export interface BaseRequest {
 
 export enum BaseRequestMethodEnum {
   photoSearch = 'flickr.photos.search',
+  getInfo = 'flickr.photos.getInfo'
 }

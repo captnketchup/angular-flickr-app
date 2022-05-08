@@ -2,11 +2,5 @@
   Flickr API search app made by Kővári D. (JDP18V)
 </header>
 <main>
-
-<div>
-  <app-search (onSearch)="searchText($event)"></app-search>
-</div>
-<div>
-  <app-grid-view [photoResult]="photoResults"></app-grid-view>
-</div>
+  <router-outlet></router-outlet>
 </main>

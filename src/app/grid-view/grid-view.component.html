@@ -1,6 +1,6 @@
 <div [ngClass]="'grid-container'">  
     <div *ngFor="let picture of (photoResult?.photos?.photo || [])">     <!--if array is null an empty array is passed-->
-        <a [routerLink]="['/picture/{id}']">
+        <a routerLink="/photo/{{picture.id}}">
         <img [ngClass]="'grid-item'" [src]="makeImageUrl(picture)">
         </a>
     </div>
